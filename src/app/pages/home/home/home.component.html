@@ -1,0 +1,26 @@
+<p>Nerve Assessment</p>
+
+
+<div class="slider-toggle">
+  <label *ngFor="let view of views" class="toggle-option" [htmlFor]="view">
+    <input type="radio" name="view" [(ngModel)]="selectedView" [value]="view" id="{{view}}" />
+
+    <span class="view-label" (click)="tabChange(view)">{{ view }}</span>
+  </label>
+</div>
+
+<div>
+  <select #data [(ngModel)]="selectedDate" (click)="onDateSelected(data.value)">
+    <option *ngFor="let date of dateArray" [value]="date">{{ date }}</option>
+  </select>
+</div>
+
+
+<div class="strategy-container">
+  <div *ngFor="let item of arrList" class="strategy-toggle">
+    <span [ngClass]="{'bullish': item.key === 'Bullish', 'bearish': item.key === 'Bearish'}">
+      {{ item.key }}
+    </span>
+    <span>{{ item.count }} {{ item.count === 1 ? 'strategy' : 'strategies' }}</span>
+  </div>
+</div>
